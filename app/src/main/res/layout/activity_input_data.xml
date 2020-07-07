@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".InputData">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Masukkan Data"
+        android:textColor="#2CA7E0"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:textSize="40dp"
+        android:layout_marginBottom="30dp"/>
+
+    <EditText
+        android:id="@+id/etNIP"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/edit"
+        android:drawablePadding="20dp"
+        android:hint="  NIP"
+        android:layout_marginBottom="5dp"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/etNama"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edit"
+        android:drawablePadding="20dp"
+        android:hint="  Nama"
+        android:layout_marginBottom="5dp"
+        android:inputType="text" />
+
+    <EditText
+        android:id="@+id/etJabatan"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@drawable/edit"
+        android:drawablePadding="20dp"
+        android:hint="  Jabatan"
+        android:inputType="text"/>
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_marginTop="50dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button"
+        android:text="Submit"
+        android:textColor="#fff"/>
+
+</LinearLayout>

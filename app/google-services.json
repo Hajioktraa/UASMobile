@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "4899157038",
+    "firebase_url": "https://datapegawai-127a2.firebaseio.com",
+    "project_id": "datapegawai-127a2",
+    "storage_bucket": "datapegawai-127a2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:4899157038:android:2f50bf10b14238ae8bdbbf",
+        "android_client_info": {
+          "package_name": "com.example.datapegawaifb"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "4899157038-6hab8fm1ntfkjnf358ufcucepp00o2e3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSzXA9P_O1yQ_ymT_7X9GkziCgtPYzjtA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "4899157038-6hab8fm1ntfkjnf358ufcucepp00o2e3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
