@@ -1,13 +1,17 @@
 package com.example.datapegawaifb;
 
+import android.app.AlertDialog;
 import android.content.Context;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -20,6 +24,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private ArrayList<data_pegawai> listPegawai;
     private Context context;
+
+    public interface dataListener{
+        void onDeleteData(data_pegawai data, int position);
+    }
+
+    dataListener listener;
 
 
     public RecyclerViewAdapter(ArrayList<data_pegawai> listPegawai, Context context) {
@@ -59,10 +69,34 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         holder.Nama.setText("Nama : " + Nama);
         holder.Jabatan.setText("Jabatan : " + Jabatan);
 
-
         holder.ListItem.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(final View v) {
+                final String[] action = {"Update","Delete"};
+                AlertDialog.Builder alert = new AlertDialog.Builder(v.getContext());
+                alert.setItems(action,  new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int i) {
+                        switch (i){
+                            case 0:
+                                Bundle bundle = new Bundle();
+                                bundle.putString("dataNIP", listPegawai.get(position).getNip());
+                                bundle.putString("dataNama", listPegawai.get(position).getNama());
+                                bundle.putString("dataJabatan", listPegawai.get(position).getJabatan());
+                                bundle.putString("getPrimaryKey", listPegawai.get(position).getKey());
+                                Intent intent = new Intent(v.getContext(), UpdateData.class);
+                                intent.putExtras(bundle);
+                                context.startActivity(intent);
+                                break;
+                            case 1:
+                                listener.onDeleteData(listPegawai.get(position), position);
+                                break;
+                        }
+                    }
+                });
+                alert.create();
+                alert.show();
+
                 return true;
             }
         });

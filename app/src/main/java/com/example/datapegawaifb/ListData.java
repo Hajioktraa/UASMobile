@@ -62,27 +62,22 @@ public class ListData extends AppCompatActivity {
 
     private void GetData() {
         Toast.makeText(getApplicationContext(), "Mohon Tunggu Sebentar...", Toast.LENGTH_LONG).show();
-        //Mendapatkan Referensi Database
+
         reference = FirebaseDatabase.getInstance().getReference();
         reference.child("Pegawai").addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
-                        //Inisialisasi ArrayList
                         dataPegawai = new ArrayList<>();
 
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            //Mapping data pada DataSnapshot ke dalam objek mahasiswa
                             data_pegawai pegawai = snapshot.getValue(data_pegawai.class);
 
-                            //Mengambil Primary Key, digunakan untuk proses Update dan Delete
                             pegawai.setKey(snapshot.getKey());
                             dataPegawai.add(pegawai);
                         }
 
-                        //Inisialisasi Adapter dan data Mahasiswa dalam bentuk Array
                         adapter = new RecyclerViewAdapter(dataPegawai, ListData.this);
 
-                        //Memasang Adapter pada RecyclerView
                         recyclerView.setAdapter(adapter);
 
                         Toast.makeText(getApplicationContext(), "Data Berhasil Dimuat", Toast.LENGTH_LONG).show();
@@ -90,11 +85,6 @@ public class ListData extends AppCompatActivity {
 
                     @Override
                     public void onCancelled(DatabaseError databaseError) {
-              /*
-                Kode ini akan dijalankan ketika ada error dan
-                pengambilan data error tersebut lalu memprint error nya
-                ke LogCat
-               */
                         Toast.makeText(getApplicationContext(), "Data Gagal Dimuat", Toast.LENGTH_LONG).show();
                         Log.e("MainActivity", databaseError.getDetails() + " " + databaseError.getMessage());
                     }
@@ -102,12 +92,11 @@ public class ListData extends AppCompatActivity {
     }
 
     private void MyRecyclerView() {
-        //Menggunakan Layout Manager, Dan Membuat List Secara Vertical
         layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(true);
 
-        //Membuat Underline pada Setiap Item Didalam List
+
         DividerItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
         itemDecoration.setDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.line));
         recyclerView.addItemDecoration(itemDecoration);
